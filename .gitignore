@@ -15,5 +15,9 @@ logs/
 *.iml
 *.ipr
 exec/jre/
-exec/jre.zip
 exec/handleExcel.jar
+exec/process.xlsx
+exec/result.xlsx
+exec/~$process.xlsx
+exec/~$result.xlsx
+exec/~$src.xlsx
