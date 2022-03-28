@@ -19,9 +19,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HandleExcel {
 
-	public static String inPath = "exec/src.xlsx";
-	public static String outPath = "exec/result.xlsx";
-	public static String outPath1 = "exec/process.xlsx";
+	public static String inPath = "exec/初始数据.xlsx";
+	public static String outPath = "exec/结果数据.xlsx";
+	public static String outPath1 = "exec/过程数据.xlsx";
 	public static String mode = "y";
 
 	public static void main(String[] args) {

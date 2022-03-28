@@ -7,6 +7,7 @@ package com.cheng.excel;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import com.alibaba.excel.exception.ExcelDataConvertException;
 import com.cheng.common.util.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -299,5 +300,21 @@ public class ExcelListener extends AnalysisEventListener {
 				.sheet("分配结果")
 				// head
 				.head(headList).registerWriteHandler(new ColumnWidthHandle()).doWrite(datas);
+	}
+
+	/**
+	 * 在转换异常 获取其他异常下会调用本接口。抛出异常则停止读取。如果这里不抛出异常则 继续读取下一行。
+	 */
+	@Override
+	public void onException(Exception exception, AnalysisContext context) throws Exception {
+		log.error("解析失败，{}", exception.getMessage());
+		// 如果是某一个单元格的转换异常 能获取到具体行号
+		// 如果要获取头的信息 配合invokeHeadMap使用
+		if (exception instanceof ExcelDataConvertException) {
+			ExcelDataConvertException excelDataConvertException = (ExcelDataConvertException) exception;
+			log.error("第{}行，第{}列解析异常，数据为:{}", excelDataConvertException.getRowIndex(),
+					excelDataConvertException.getColumnIndex(), excelDataConvertException.getCellData());
+		}
+		throw exception;
 	}
 }

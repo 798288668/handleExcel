@@ -197,7 +197,12 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		} else {
 			return null;
 		}
+	}
 
+	public static int getDaysOfMonth(Date date) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 	}
 
 }

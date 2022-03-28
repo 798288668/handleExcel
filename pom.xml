@@ -115,6 +115,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--                <mainClass>com.cheng.excel.HandleExcel</mainClass>-->
+                    <mainClass>com.cheng.excel.process.ExcelProcessHandle</mainClass>
+                </configuration>
             </plugin>
         </plugins>
         <resources>
